@@ -1,0 +1,6 @@
+{
+  "main": "index.js",
+  "dependencies": {
+    "jest": "23.6.0"
+  }
+}
