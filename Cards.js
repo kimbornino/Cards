@@ -1,15 +1,10 @@
-//((1) create a standard deck of playing cards (defined below),
-//(2) shuffle the deck (also defined below),
-//(3) deal as many cards as possible to a number of players that would be specified by the program's user1)
-
-const cards {
-
 function playGame() {
   getNumberOfPlayers();
   determineCardsToDeal(players);
   buildDeck();
   shuffleDeck();
-  buildPlayerArray();
+  buildPlayerArray(players);
+  console.log(arrayofPlayers);
 
 }
 
@@ -19,24 +14,22 @@ var suits = ["spades", "diamonds", "clubs", "hearts"];
 var cardNum = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
 var cardsToDeal;
 var arrayofPlayers = new Array();
-//var playerArray = new Array(cardsToDeal);
 
 function getNumberOfPlayers()
   {
     players = prompt("Please enter the number of players");
     validatePlayers(players);
-    //add check to validate
-
     return players;
   }
-
+///is int
   function validatePlayers(players)
   {
-      if (players >= 1 && players <53)
+      if (players >= 1 && players <53 && players = int)
       {
         return players;
       }
-      else {
+      else
+      {
         getNumberOfPlayers();
       }
   }
@@ -50,9 +43,6 @@ function determineCardsToDeal(players)
         return cardsToDeal;
 }
 
-//odule.exports = cards;
-
-
 function buildDeck()
 {
   for (let i=0; i< suits.length; i++)
@@ -60,11 +50,13 @@ function buildDeck()
         for (let j=0; j < cardNum.length; j++)
         {
           var card = {cardNum: cardNum[j], Suits: suits[i]};
+
   			deck.push(card);
         }
       }
       return deck;
 }
+
 function shuffleDeck()
 {
   for (var i = 0; i < 1000; i++)
@@ -73,12 +65,13 @@ function shuffleDeck()
     var newPlacement = Math.floor(Math.random() * 52) + 1
     deck.splice([newPlacement], 0, shift);
   }
+  return deck;
 }
 
-function buildPlayerArray()
+function buildPlayerArray(numPlayers)
 {
 
-for (var i = 0; i < players; i++) {
+for (var i = 0; i < numPlayers; i++) {
   var playerCards = new Array();
   for (let j = 0; j < cardsToDeal; j++)
   {
@@ -91,5 +84,3 @@ for (var i = 0; i < players; i++) {
 }
 
 playGame();
-
-exports.module = Cards;
